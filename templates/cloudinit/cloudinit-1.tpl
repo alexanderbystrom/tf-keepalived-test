@@ -1,0 +1,24 @@
+#cloud-config
+# vim: syntax=yaml
+# system_info:
+#   default_user:
+#     ssh_authorized_keys:
+#       - "PUBKEY1"
+#       - "PUBKEY2"
+
+package_update: true
+package_upgrade: true
+packages:
+  - nginx
+  - keepalived
+
+write_files:
+- encoding: b64
+  content: dnJycF9pbnN0YW5jZSB2cnJwX2dyb3VwXzEgewogICAgIHN0YXRlIE1BU1RFUgogICAgIGludGVyZmFjZSBlbnMzCiAgICAgdmlydHVhbF9yb3V0ZXJfaWQgMQogICAgIHByaW9yaXR5IDEwMAogICAgIGF1dGhlbnRpY2F0aW9uIHsKICAgICAgICAgYXV0aF90eXBlIFBBU1MKICAgICAgICAgYXV0aF9wYXNzIHBhc3N3b3JkCiAgICAgfQogICAgIHZpcnR1YWxfaXBhZGRyZXNzIHsKICAgICAgICAgMTkyLjE2OC4xMDAuMTUvMjUgYnJkIDE5Mi4xNjguMTAwLjEyNyBkZXYgZW5zMwogICAgIH0KfQo=
+  owner: root:root
+  path: /etc/keepalived/keepalived.conf
+  permissions: '0644'
+- encoding: b64
+  content: PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KPHRpdGxlPldlbGNvbWUgdG8gV0VCLTAxITwvdGl0bGU+CjxzdHlsZT4KICAgIGJvZHkgewogICAgICAgIHdpZHRoOiAzNWVtOwogICAgICAgIG1hcmdpbjogMCBhdXRvOwogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsIFZlcmRhbmEsIEFyaWFsLCBzYW5zLXNlcmlmOwogICAgfQo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5Pgo8aDE+V2VsY29tZSB0byBXRUItMDEhPC9oMT4KCjxwPkZvciBvbmxpbmUgZG9jdW1lbnRhdGlvbiBhbmQgc3VwcG9ydCBwbGVhc2UgcmVmZXIgdG8KPGEgaHJlZj0iaHR0cDovL25naW54Lm9yZy8iPm5naW54Lm9yZzwvYT4uPGJyLz4KQ29tbWVyY2lhbCBzdXBwb3J0IGlzIGF2YWlsYWJsZSBhdAo8YSBocmVmPSJodHRwOi8vbmdpbnguY29tLyI+bmdpbnguY29tPC9hPi48L3A+Cgo8cD48ZW0+VGhhbmsgeW91IGZvciB1c2luZyBuZ2lueC48L2VtPjwvcD4KPC9ib2R5Pgo8L2h0bWw+
+  owner: www-data:www-data
+  path: /var/www/html/index.nginx-debian.html
